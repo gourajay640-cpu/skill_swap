@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Learn & Share Skills</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>SkillSwap</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#" class="nav-link" onclick="handleAuthClick(event)">Auth</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to <span class="gradient-text">SkillSwap</span></h1>
+            <p class="hero-subtitle">Share your skills, learn from others, grow together</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="navigateTo('register')">Get Started</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="about" class="features">
+        <h2 class="section-title">Why Choose SkillSwap?</h2>
+        <div class="features-grid">
+            <div class="feature-card glass">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community</h3>
+                <p>Connect with learners and experts from around the world</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Learn</h3>
+                <p>Acquire new skills from experienced professionals</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Grow</h3>
+                <p>Develop your expertise and reach your full potential</p>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Global</h3>
+                <p>Access skills and share knowledge with a global audience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Auth Pages -->
+    <div id="authModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="authContainer"></div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Alert Message -->
+    <div id="alertMessage" class="alert" style="display: none;"></div>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>

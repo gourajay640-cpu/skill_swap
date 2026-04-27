@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SkillSwap</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>SkillSwap</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link" onclick="logout(event)">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <h3>Dashboard</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showSection('profile', event)" class="sidebar-link active">
+                    <i class="fas fa-user"></i> My Profile
+                </a></li>
+                <li><a href="#" onclick="showSection('users', event)" class="sidebar-link">
+                    <i class="fas fa-users"></i> Browse Users
+                </a></li>
+                <li><a href="#" onclick="showSection('settings', event)" class="sidebar-link">
+                    <i class="fas fa-cog"></i> Settings
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Profile Section -->
+            <section id="profile" class="dashboard-section active">
+                <div class="section-header">
+                    <h1>My Profile</h1>
+                </div>
+                <div class="profile-card glass">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profileName">Loading...</h2>
+                            <p id="profileEmail">Loading...</p>
+                            <p id="profileJoinDate">Joined: Loading...</p>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <div class="edit-toggle">
+                            <button class="btn btn-secondary" onclick="toggleEditMode()">
+                                <i class="fas fa-edit"></i> Edit Profile
+                            </button>
+                        </div>
+                        <form id="editProfileForm" class="profile-form" style="display: none;">
+                            <div class="form-group">
+                                <label for="editName">Full Name</label>
+                                <input type="text" id="editName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">Email</label>
+                                <input type="email" id="editEmail" class="form-input" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <button type="button" class="btn btn-secondary" onclick="toggleEditMode()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Browse Users Section -->
+            <section id="users" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Browse Community Members</h1>
+                </div>
+                <div class="users-grid" id="usersGrid">
+                    <p class="loading-text">Loading users...</p>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Settings</h1>
+                </div>
+                <div class="settings-card glass">
+                    <div class="setting-item">
+                        <h3>Account Security</h3>
+                        <p>Manage your account security settings</p>
+                        <button class="btn btn-secondary">Change Password</button>
+                    </div>
+                    <hr class="divider">
+                    <div class="setting-item">
+                        <h3>Delete Account</h3>
+                        <p>Permanently delete your account and all data</p>
+                        <button class="btn btn-danger" onclick="confirmDeleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Alert Message -->
+    <div id="alertMessage" class="alert" style="display: none;"></div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Confirm Action</h2>
+            <p id="confirmMessage"></p>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" onclick="executeConfirm()">Confirm</button>
+                <button class="btn btn-secondary" onclick="closeConfirm()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>
